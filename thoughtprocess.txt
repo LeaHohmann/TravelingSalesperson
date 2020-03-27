@@ -1,0 +1,75 @@
+Thoughts before reading up on anything:
+
+Find the shortest possible route between N places that:
+- Starts at place a and ends at place a
+- Visits all other places exactly once
+
+Given:
+Distance ij between two places i and j for all possible combinations
+-> Distance matrix D with N^2 elements (of which N are NaN, so N^2-N number
+elements)
+
+Of these, N have to be travelled in any solution (subset D_travelled with
+N elements)
+The solution is a loop, therefore it doesn't matter which is the
+starting/ending point
+Each place i is involved in two distance elements in D_travelled (to and from)
+
+Possible algorithm issues: Ensure each place gets visited (no loops of size
+<N)
+
+Possible way of doing it:
+Possible matrix of distances D:
+
+	a	b	c	..	N
+
+a	NaN	ab	ac	..	aN
+
+b	ab	NaN	bc	..	bN
+
+c	ac	bc	NaN	..	cN
+
+..	..	..	..	..	..
+
+N	aN	bN	cN	..	NaN
+
+
+
+Now the algorithm would have to pick 2N indices with a number (non NaN) value so
+that:
+1) In each row/column, two elements get picked (either row or column would
+   probably work)
+2) For each index D[i:j] that gets picked, the corresponding D[j:i] also has to
+   be picked
+
+All combinations that fulfill 1 and 2 are possible routes for the salesperson.
+In order to get the shortest one:
+
+3) The sum of the picked elements is the lowest of all possible combinations
+   that fulfill 1 & 2
+
+Number of possible combinations: (N-1)!/2  ((N-1)! paths starting from any
+place i with forward and backward paths being equivalent)
+- summing elements for all possibilities is not viable for large N (e.g. if
+  N=10 it will 9!/2 = 181440 combinations)
+-> How to get to the solution without doing that?
+
+After consulting the reference
+(https://nbviewer.jupyter.org/url/norvig.com/ipython/TSP.ipynb): It is not
+possible to find the exact solution without calculating all of them.
+However, a good solution can be found with different strategies, I didn't look
+into them in detail, instead I will choose one by myself (from trying on
+paper) and see how it turns
+out
+
+
+Possibilities: 
+a) Start at a point and always go the shortest way. Issue: The last point can
+be really far away if it's an outlier
+b) For each point, choose the 2 closest. If it's a match, keep it, otherwise,
+retry (excluding points that are "full"). This can easily yield smaller loops
+that don't combine to one route, therefore one would have to integrate them in
+the end. Might be pretty complicated
+c) Take subsets and calculate the exact solutions, integrate them somehow 
+
+  
