@@ -18,7 +18,7 @@ Each place i is involved in two distance elements in D_travelled (to and from)
 Possible algorithm issues: Ensure each place gets visited (no loops of size
 <N)
 
-Possible way of doing it:
+
 Possible matrix of distances D:
 
 	a	b	c	..	N
@@ -65,11 +65,14 @@ out
 
 Possibilities: 
 a) Start at a point and always go the shortest way. Issue: The last point can
-be really far away if it's an outlier
+be really far away if it's an outlier. Possibly alter this method to integrate
+outliers into the nearest path
 b) For each point, choose the 2 closest. If it's a match, keep it, otherwise,
 retry (excluding points that are "full"). This can easily yield smaller loops
 that don't combine to one route, therefore one would have to integrate them in
 the end. Might be pretty complicated
-c) Take subsets and calculate the exact solutions, integrate them somehow 
-
+c) Take subsets of the dataset and calculate the exact solutions for these, integrate them somehow
+ 
+-> Program should be able to put out exact solution for smaller datasets and
+use another method above a certain threshhold
   
