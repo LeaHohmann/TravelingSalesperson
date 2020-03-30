@@ -48,6 +48,16 @@ In order to get the shortest one:
 3) The sum of the picked elements is the lowest of all possible combinations
    that fulfill 1 & 2
 
+This is not very practical, possible better way for the exact solution:
+1) Create all permutations of the index vector (places)
+2) In every permutation vector, sum for each element i the value of D that
+corresponds to i:i+1 (where i is ith element of permutation vector, used for
+indexing D); possible issue: For symmetric problem (which it is with only
+distances, we have to leave out the permutation that are mirrored/backwards
+ways of other permutations)
+3) Take the permutation with the shortest sum
+
+
 Number of possible combinations: (N-1)!/2  ((N-1)! paths starting from any
 place i with forward and backward paths being equivalent)
 - summing elements for all possibilities is not viable for large N (e.g. if
