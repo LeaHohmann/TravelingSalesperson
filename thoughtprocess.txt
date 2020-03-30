@@ -64,13 +64,12 @@ place i with forward and backward paths being equivalent)
   N=10 it will 9!/2 = 181440 combinations)
 -> How to get to the solution without doing that?
 
-After consulting the reference
+After skimming through the reference
 (https://nbviewer.jupyter.org/url/norvig.com/ipython/TSP.ipynb): It is not
 possible to find the exact solution without calculating all of them.
 However, a good solution can be found with different strategies, I didn't look
 into them in detail, instead I will choose one by myself (from trying on
-paper) and see how it turns
-out
+paper) and see how it turns out
 
 
 Possibilities: 
@@ -91,3 +90,38 @@ Sweden: 10 cities
 Germany: 15 cities
 Put the threshhold at 10 cities and have it use the exact one only for those
 <= this amount  
+
+
+Exact solution:
+How to get from the permutation to the path length? If I search the element
+for each pair of places in the permutation for each permutation, this is A LOT
+of iterations
+Better:
+Reshape the matrix by the permutation's index vector (columns) and index
+vector starting from 2nd position (rows), then I can just sum over the
+diagonal - is this more or less calculation effort than iterating? Feels like
+less, but not sure (test this!!)
+
+It appears to be very slow, which is expected, since each iteration has to
+deal with the entire matrix instead of just the distance values that belong to
+this iteration.
+This would be better if one would have the cities as objects and absolute
+positions of the cities, but this probably only works if it's about direct distances
+and not time, car distances, etc? 
+The general case is very slow for 10 cities on first test, therefore I have to
+a) try to speed it up and
+b) change the number of places that are below the threshhold for using the
+exact method
+
+Found a bug in the exact program, fixed it, however it is still slow
+One issue that will cut the calculation time: The permutations solution first
+makes ALL permutations, then filters them afterwards - is it possible to make
+only the needed ones?
+ALSO on further observations: There are still too many possibilities. There
+should be (N-1)!/2 but there are N!/2 with my method ("shifted" loops are not
+avoided) - how to avoid this?
+Essentially, I only need the subset of permutations with fixed first position
+(e.g. for A,B,C it would be A,B,C and A,C,B), but the permutations tool
+doesn't have an option to fix A - make a smaller vector minus the first/last
+one and then append?
+
