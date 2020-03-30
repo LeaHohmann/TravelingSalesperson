@@ -85,4 +85,9 @@ c) Take subsets of the dataset and calculate the exact solutions for these, inte
  
 -> Program should be able to put out exact solution for smaller datasets and
 use another method above a certain threshhold
-  
+
+Two datasets:
+Sweden: 10 cities
+Germany: 15 cities
+Put the threshhold at 10 cities and have it use the exact one only for those
+<= this amount  

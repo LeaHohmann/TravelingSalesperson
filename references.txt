@@ -1,0 +1,5 @@
+References I used for help with issues I couldn't figure out by myself or
+reading the documentation:
+
+For help with permutations in symmetric case:
+https://stackoverflow.com/questions/960557/how-to-generate-permutations-of-a-list-without-reverse-duplicates-in-python-us 
