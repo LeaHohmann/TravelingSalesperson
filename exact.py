@@ -26,7 +26,8 @@ def shortestpath(inputdataframe):
         if pathlength < distance:
                 distance = pathlength
                 shortest = path 
-    print(shortest)
+    print("Shortest path: ", shortest)
+    print("Length: ", distance)
             
 
         

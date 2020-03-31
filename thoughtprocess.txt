@@ -72,7 +72,7 @@ into them in detail, instead I will choose one by myself (from trying on
 paper) and see how it turns out
 
 
-Possibilities: 
+Possibilities (tested on paper):
 a) Start at a point and always go the shortest way. Issue: The last point can
 be really far away if it's an outlier. Possibly alter this method to integrate
 outliers into the nearest path
@@ -80,7 +80,8 @@ b) For each point, choose the 2 closest. If it's a match, keep it, otherwise,
 retry (excluding points that are "full"). This can easily yield smaller loops
 that don't combine to one route, therefore one would have to integrate them in
 the end. Might be pretty complicated
-c) Take subsets of the dataset and calculate the exact solutions for these, integrate them somehow
+c) Take subsets of the dataset and calculate the exact solutions for these,
+integrate them somehow (seems pretty difficult to me)
  
 -> Program should be able to put out exact solution for smaller datasets and
 use another method above a certain threshhold
@@ -125,3 +126,9 @@ Essentially, I only need the subset of permutations with fixed first position
 doesn't have an option to fix A - make a smaller vector minus the first/last
 one and then append?
 
+Added a new dataset (Eurotrip) with fewer cities for size threshhold test
+5 cities: computes very fast
+6 cities: computes very fast
+7 cities: computes very fast
+8 cities: relatively fast, but you have to wait
+-> 8 as the new threshhold: Above 8, use approximation
