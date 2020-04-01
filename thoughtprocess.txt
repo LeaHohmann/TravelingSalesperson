@@ -132,3 +132,11 @@ Added a new dataset (Eurotrip) with fewer cities for size threshhold test
 7 cities: computes very fast
 8 cities: relatively fast, but you have to wait
 -> 8 as the new threshhold: Above 8, use approximation
+
+Approximation method:
+After extensive thought and trial yesterday, method B and C seem
+difficult/flawed 
+Therefore I will try A (shortest path), however, this might yield pretty bad
+results, so maybe try A and then optimize it further?
+For example try A from different starting points and then compare their
+lengths and take the best one 
