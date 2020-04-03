@@ -16,4 +16,4 @@ This repository also contains 3 example datasets, two larger than 8 (sweden, ger
 
 # Pip Package:
 
-[https://pypi.org/project/aspp-lea-salesman/](https://pypi.org/project/aspp-lea-salesman/)
+[ https://pypi.org/project/aspplea/](https://pypi.org/project/aspplea/)
